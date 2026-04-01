@@ -788,6 +788,7 @@
       border-radius:14px;
       border:1px solid rgba(255,255,255,.08);
       background:rgba(255,255,255,.02);
+      table-layout: fixed;
     }
 
     .score-table th,
