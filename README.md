@@ -409,11 +409,13 @@
     }
         /* Flatten the control panel so children can be positioned */
     .control-panel{
-      display:contents;
+      display:block;
     }
 
     .ball-picker-block,
     .scoreboard-block {
+      width: 100%;
+      max-width: 100%;
       margin-top: 0; /* remove leftover margins */
     }
 
@@ -805,7 +807,9 @@
       text-align:center;
       font-weight:800;
       font-size:.9rem;
-      width: 25%;
+      width: auto;
+      max-width: 100%
+      word-break: break-word;
     }
 
     .score-table thead th{
