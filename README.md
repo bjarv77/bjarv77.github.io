@@ -383,16 +383,38 @@
     }
 
     .game-main{
-      position:relative;
-      z-index:2;
       display:grid;
-      grid-template-columns:1.08fr .92fr;
+      grid-template-columns:1fr;
       gap:14px;
-      align-items:start;
     }
 
     .lane-wrap{
-      position:relative;
+      order:1;
+    }
+
+    .control-panel{
+      order:2;
+    }
+        /* Flatten the control panel so children can be positioned */
+    .control-panel{
+      display:contents;
+    }
+
+    /* Order everything exactly how you want */
+    .scoreboard-block{
+      order:1;
+    }
+
+    .lane-wrap{
+      order:2;
+    }
+
+    .controls-block{
+      order:3;
+    }
+
+    .ball-picker-block{
+      order:4;
     }
 
     .lane{
@@ -751,11 +773,6 @@
       }
     }
 
-    .control-panel{
-      display:grid;
-      gap:12px;
-    }
-
     .subcard{
       background:var(--panel-soft);
       border:1px solid var(--line);
@@ -1085,7 +1102,7 @@
             </div>
 
             <div class="control-panel">
-              <div class="subcard">
+              <div class="subcard scoreboard-block">
                 <h3>Scoreboard</h3>
                 <table class="score-table">
                   <thead>
@@ -1120,7 +1137,7 @@
                 <div class="tiny" style="margin-top:8px;">Strike = X · Spare = /</div>
               </div>
 
-              <div class="subcard">
+              <div class="subcard ball-picker-block">
                 <h3>Pick Your Ball</h3>
                 <div class="ball-picker">
                   <button class="ball-option active" data-ball="sparkly" type="button">
@@ -1165,7 +1182,7 @@
                 </div>
               </div>
 
-              <div class="subcard">
+              <div class="subcard controls-block">
                 <div class="slider-block">
                   <div class="slider-head">
                     <span>Aim</span>
@@ -1582,33 +1599,39 @@ If you want to bowl, Venmo Brad @Bradley-Jarvensivu`;
         updateBallPositionVisual();
       }
 
+let dragStartX = 0;
+let dragMoved = false;
+
       ball.addEventListener("pointerdown", (e) => {
         if (rolling) return;
         dragging = true;
+        dragMoved = false;
+        dragStartX = e.clientX;
         ball.classList.add("dragging");
         ball.setPointerCapture(e.pointerId);
       });
 
       ball.addEventListener("pointermove", (e) => {
         if (!dragging || rolling) return;
+        dragMoved = true;
         setBallXFromClientX(e.clientX);
       });
 
       ball.addEventListener("pointerup", (e) => {
         dragging = false;
         ball.classList.remove("dragging");
+
         try { ball.releasePointerCapture(e.pointerId); } catch {}
+
+        // If it wasn’t dragged → treat as a click
+        if (!dragMoved && !rolling) {
+          rollBall();
+        }
       });
 
       ball.addEventListener("pointercancel", () => {
         dragging = false;
         ball.classList.remove("dragging");
-      });
-
-      lane.addEventListener("pointerdown", (e) => {
-        if (rolling) return;
-        if (e.target === ball) return;
-        setBallXFromClientX(e.clientX);
       });
 
       function adjustSlider(slider, amount, min, max) {
