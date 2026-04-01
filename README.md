@@ -74,12 +74,6 @@
       z-index:1;
     }
 
-    @media (min-width: 1200px){
-      .wrap {
-        max-width: 1400px;
-      }
-    }
-
     .hero{
       position:relative;
       overflow:hidden;
@@ -101,6 +95,12 @@
       pointer-events:none;
     }
 
+    @media (min-width: 1200px){
+      .wrap {
+        max-width: 1400px;
+      }
+    }
+    
     @keyframes shine{
       to{transform:translateX(120%)}
     }
@@ -786,7 +786,6 @@
       border:1px solid var(--line);
       border-radius:18px;
       padding:14px;
-      overflow-x: auto;
     }
 
     .score-table{
