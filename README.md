@@ -122,7 +122,13 @@
       display:grid;
       grid-template-columns:1.2fr .8fr;
       gap:20px;
-      align-items:center;
+      align-items:start;
+    }
+    
+    .hero-left{
+      display: flex;
+      flex-direction: column;
+      gap: 14px; /* spacing between text and ball picker */
     }
 
     h1{
@@ -400,21 +406,9 @@
       display:contents;
     }
 
-    /* Order everything exactly how you want */
-    .scoreboard-block{
-      order:1;
-    }
-
-    .lane-wrap{
-      order:2;
-    }
-
-    .controls-block{
-      order:3;
-    }
-
-    .ball-picker-block{
-      order:4;
+    .ball-picker-block,
+    .scoreboard-block {
+      margin-top: 0; /* remove leftover margins */
     }
 
     .lane{
@@ -1013,219 +1007,221 @@
     </section>
 
     <section class="layout">
-      <div class="card">
-        <h2>Quest Details</h2>
-        <div class="quest-list">
-          <div class="quest">
-            <div class="label">Date</div>
-            <div class="value">Saturday, April 11, 2026</div>
-          </div>
-          <div class="quest">
-            <div class="label">Time</div>
-            <div class="value">5:00 PM bowling · 3:00 PM dinner</div>
-          </div>
-          <div class="quest">
-            <div class="label">Location</div>
-            <div class="value">Railroad + Strikerz at Angel of the Winds Casino</div>
-          </div>
-          <div class="quest">
-            <div class="label">Objective</div>
-            <div class="value">Bowl a few frames, eat good food, and celebrate Brad.</div>
-          </div>
-          <div class="quest">
-            <div class="label">RSVP By</div>
-            <div class="value">April 3, 2026</div>
-          </div>
-        </div>
+      <div class="hero-left">
+          <div class="card">
+            <h2>Quest Details</h2>
+            <div class="quest-list">
+              <div class="quest">
+                <div class="label">Date</div>
+                <div class="value">Saturday, April 11, 2026</div>
+              </div>
+              <div class="quest">
+                <div class="label">Time</div>
+                <div class="value">5:00 PM bowling · 3:00 PM dinner</div>
+              </div>
+              <div class="quest">
+                <div class="label">Location</div>
+                <div class="value">Railroad + Strikerz at Angel of the Winds Casino</div>
+              </div>
+              <div class="quest">
+                <div class="label">Objective</div>
+                <div class="value">Bowl a few frames, eat good food, and celebrate Brad.</div>
+              </div>
+              <div class="quest">
+                <div class="label">RSVP By</div>
+                <div class="value">April 3, 2026</div>
+              </div>
+            </div>
 
-        <p class="note">
-          We’ll be eating an early dinner at Railroad at 3:00 PM before bowling at 5:00 PM.
-          We’d love for you to join us for dinner too.
-          Bowling is $10/person. If you want to bowl, you can Venmo Brad at <strong>@Bradley-Jarvensivu</strong>.
-        </p>
+            <p class="note">
+              We’ll be eating an early dinner at Railroad at 3:00 PM before bowling at 5:00 PM.
+              We’d love for you to join us for dinner too.
+              Bowling is $10/person. If you want to bowl, you can Venmo Brad at <strong>@Bradley-Jarvensivu</strong>.
+            </p>
 
-        <div class="tiny" id="copyStatus" style="margin-top:10px;"></div>
+            <div class="tiny" id="copyStatus" style="margin-top:10px;"></div>
+          </div>
+
+          <div class="subcard ball-picker-block">
+            <h3>Pick Your Ball</h3>
+            <div class="ball-picker">
+              <button class="ball-option active" data-ball="sparkly" type="button">
+                <div class="mini-ball sparkly"></div>
+                <div class="option-text">
+                  <strong>Sparkly</strong>
+                  <span>Allison's Ball</span>
+                </div>
+              </button>
+
+              <button class="ball-option" data-ball="flame" type="button">
+                <div class="mini-ball flame"></div>
+                <div class="option-text">
+                  <strong>Fire Ball</strong>
+                  <span>Always a good time!</span>
+                </div>
+              </button>
+
+              <button class="ball-option" data-ball="blue" type="button">
+                <div class="mini-ball blue"></div>
+                <div class="option-text">
+                  <strong>Blue Ball</strong>
+                  <span>Don't laugh</span>
+                </div>
+              </button>
+
+              <button class="ball-option" data-ball="red" type="button">
+                <div class="mini-ball red"></div>
+                <div class="option-text">
+                  <strong>Red Ball</strong>
+                  <span>Gives you wings</span>
+                </div>
+              </button>
+
+              <button class="ball-option" data-ball="birthday" type="button" style="grid-column:1 / -1;">
+                <div class="mini-ball birthday"></div>
+                <div class="option-text">
+                  <strong>Birthday Confetti</strong>
+                  <span>Funfetti flavor</span>
+                </div>
+              </button>
+            </div>
+          </div>
       </div>
+      
+      <div class="hero-right">
+        <div class="card game-card">
+          <h2 style="margin-bottom:12px;">Bonus Round: Birthday Bowling</h2>
 
-      <div class="card game-card">
-        <h2 style="margin-bottom:12px;">Bonus Round: Birthday Bowling</h2>
-
-        <div class="game-shell">
-          <div class="top-hud">
-            <div class="hud-pill">
-              <span class="k">Frame</span>
-              <span class="v" id="frameValue">1 / 3</span>
+          <div class="game-shell">
+            <div class="top-hud">
+              <div class="hud-pill">
+                <span class="k">Frame</span>
+                <span class="v" id="frameValue">1 / 3</span>
+              </div>
+              <div class="hud-pill">
+                <span class="k">Roll</span>
+                <span class="v" id="rollValue">1 / 2</span>
+              </div>
+              <div class="hud-pill">
+                <span class="k">Total</span>
+                <span class="v" id="scoreValue">0</span>
+              </div>
+              <div class="hud-pill">
+                <span class="k">High Score</span>
+                <span class="v" id="highScore">0</span>
+              </div>
             </div>
-            <div class="hud-pill">
-              <span class="k">Roll</span>
-              <span class="v" id="rollValue">1 / 2</span>
-            </div>
-            <div class="hud-pill">
-              <span class="k">Total</span>
-              <span class="v" id="scoreValue">0</span>
-            </div>
-            <div class="hud-pill">
-              <span class="k">High Score</span>
-              <span class="v" id="highScore">0</span>
-            </div>
-          </div>
-
-          <div class="game-main">
-            <div class="lane-wrap">
-              <div class="lane" id="lane">
-                <div class="lane-overlay-top">
-                  <div class="lane-badge">Guest Mode</div>
-                  <div class="lane-badge" id="frameSummary">Frame 1 · Roll 1</div>
+<div class="control-panel">
+                <div class="subcard scoreboard-block">
+                  <h3>Scoreboard</h3>
+                  <table class="score-table">
+                    <thead>
+                      <tr>
+                        <th>Frame</th>
+                        <th>R1</th>
+                        <th>R2</th>
+                        <th>Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th>1</th>
+                        <td id="f1r1">—</td>
+                        <td id="f1r2">—</td>
+                        <td id="f1t" class="total-cell">0</td>
+                      </tr>
+                      <tr>
+                        <th>2</th>
+                        <td id="f2r1">—</td>
+                        <td id="f2r2">—</td>
+                        <td id="f2t" class="total-cell">0</td>
+                      </tr>
+                      <tr>
+                        <th>3</th>
+                        <td id="f3r1">—</td>
+                        <td id="f3r2">—</td>
+                        <td id="f3t" class="total-cell">0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="tiny" style="margin-top:8px;">Strike = X · Spare = /</div>
                 </div>
-
-                  <div class="pins">
-                    <div class="pin pin1"></div>
-                    <div class="pin pin2"></div>
-                    <div class="pin pin3"></div>
-                    <div class="pin pin4"></div>
-                    <div class="pin pin5"></div>
-                    <div class="pin pin6"></div>
-                    <div class="pin pin7"></div>
-                    <div class="pin pin8"></div>
-                    <div class="pin pin9"></div>
-                    <div class="pin pin10"></div>
+            <div class="game-main">
+              <div class="lane-wrap">
+                <div class="lane" id="lane">
+                  <div class="lane-overlay-top">
+                    <div class="lane-badge">Guest Mode</div>
+                    <div class="lane-badge" id="frameSummary">Frame 1 · Roll 1</div>
                   </div>
 
-                <div class="aim" id="aimLine"></div>
-
-                <div class="ball sparkly" id="ball">
-                  <div class="spark-stars"></div>
-                  <div class="finger"></div>
-                </div>
-
-                <div class="foul"></div>
-
-                <div class="approach-dots">
-                  <span></span><span></span><span></span><span></span><span></span>
-                </div>
-
-                <div class="approach-shine"></div>
-                <div class="lane-hint">Drag ball or tap lane to move • then roll</div>
-                <div class="levelup" id="levelUpFlash">LEVEL UP!</div>
-              </div>
-            </div>
-
-            <div class="control-panel">
-              <div class="subcard scoreboard-block">
-                <h3>Scoreboard</h3>
-                <table class="score-table">
-                  <thead>
-                    <tr>
-                      <th>Frame</th>
-                      <th>R1</th>
-                      <th>R2</th>
-                      <th>Total</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <th>1</th>
-                      <td id="f1r1">—</td>
-                      <td id="f1r2">—</td>
-                      <td id="f1t" class="total-cell">0</td>
-                    </tr>
-                    <tr>
-                      <th>2</th>
-                      <td id="f2r1">—</td>
-                      <td id="f2r2">—</td>
-                      <td id="f2t" class="total-cell">0</td>
-                    </tr>
-                    <tr>
-                      <th>3</th>
-                      <td id="f3r1">—</td>
-                      <td id="f3r2">—</td>
-                      <td id="f3t" class="total-cell">0</td>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="tiny" style="margin-top:8px;">Strike = X · Spare = /</div>
-              </div>
-
-              <div class="subcard ball-picker-block">
-                <h3>Pick Your Ball</h3>
-                <div class="ball-picker">
-                  <button class="ball-option active" data-ball="sparkly" type="button">
-                    <div class="mini-ball sparkly"></div>
-                    <div class="option-text">
-                      <strong>Sparkly</strong>
-                      <span>Allison's Ball</span>
+                    <div class="pins">
+                      <div class="pin pin1"></div>
+                      <div class="pin pin2"></div>
+                      <div class="pin pin3"></div>
+                      <div class="pin pin4"></div>
+                      <div class="pin pin5"></div>
+                      <div class="pin pin6"></div>
+                      <div class="pin pin7"></div>
+                      <div class="pin pin8"></div>
+                      <div class="pin pin9"></div>
+                      <div class="pin pin10"></div>
                     </div>
-                  </button>
 
-                  <button class="ball-option" data-ball="flame" type="button">
-                    <div class="mini-ball flame"></div>
-                    <div class="option-text">
-                      <strong>Fire Ball</strong>
-                      <span>Always a good time!</span>
-                    </div>
-                  </button>
+                  <div class="aim" id="aimLine"></div>
 
-                  <button class="ball-option" data-ball="blue" type="button">
-                    <div class="mini-ball blue"></div>
-                    <div class="option-text">
-                      <strong>Blue Ball</strong>
-                      <span>Don't laugh</span>
-                    </div>
-                  </button>
+                  <div class="ball sparkly" id="ball">
+                    <div class="spark-stars"></div>
+                    <div class="finger"></div>
+                  </div>
 
-                  <button class="ball-option" data-ball="red" type="button">
-                    <div class="mini-ball red"></div>
-                    <div class="option-text">
-                      <strong>Red Ball</strong>
-                      <span>Gives you wings</span>
-                    </div>
-                  </button>
+                  <div class="foul"></div>
 
-                  <button class="ball-option" data-ball="birthday" type="button" style="grid-column:1 / -1;">
-                    <div class="mini-ball birthday"></div>
-                    <div class="option-text">
-                      <strong>Birthday Confetti</strong>
-                      <span>Funfetti flavor</span>
-                    </div>
-                  </button>
+                  <div class="approach-dots">
+                    <span></span><span></span><span></span><span></span><span></span>
+                  </div>
+
+                  <div class="approach-shine"></div>
+                  <div class="lane-hint">Drag ball or tap lane to move • then roll</div>
+                  <div class="levelup" id="levelUpFlash">LEVEL UP!</div>
                 </div>
               </div>
 
-              <div class="subcard controls-block">
-                <div class="slider-block">
-                  <div class="slider-head">
-                    <span>Aim</span>
-                    <span id="aimValue">0°</span>
+                <div class="subcard controls-block">
+                  <div class="slider-block">
+                    <div class="slider-head">
+                      <span>Aim</span>
+                      <span id="aimValue">0°</span>
+                    </div>
+                    <input id="aimSlider" type="range" min="-32" max="32" value="0" />
                   </div>
-                  <input id="aimSlider" type="range" min="-32" max="32" value="0" />
-                </div>
 
-                <div class="slider-block" style="margin-top:12px;">
-                  <div class="slider-head">
-                    <span>Power</span>
-                    <span id="powerValue">74%</span>
+                  <div class="slider-block" style="margin-top:12px;">
+                    <div class="slider-head">
+                      <span>Power</span>
+                      <span id="powerValue">74%</span>
+                    </div>
+                    <input id="powerSlider" type="range" min="40" max="100" value="74" />
                   </div>
-                  <input id="powerSlider" type="range" min="40" max="100" value="74" />
-                </div>
 
-                <div class="slider-block" style="margin-top:12px;">
-                  <div class="slider-head">
-                    <span>Spin</span>
-                    <span id="spinValue">0</span>
+                  <div class="slider-block" style="margin-top:12px;">
+                    <div class="slider-head">
+                      <span>Spin</span>
+                      <span id="spinValue">0</span>
+                    </div>
+                    <input id="spinSlider" type="range" min="-30" max="30" value="0" />
                   </div>
-                  <input id="spinSlider" type="range" min="-30" max="30" value="0" />
-                </div>
 
-                <div class="cta-row">
-                  <button class="primary" id="rollBtn" type="button">Send It</button>
-                  <button class="ghost" id="resetBtn" type="button">Reset Game</button>
-                </div>
+                  <div class="cta-row">
+                    <button class="primary" id="rollBtn" type="button">Send It</button>
+                    <button class="ghost" id="resetBtn" type="button">Reset Game</button>
+                  </div>
 
-                <div class="tiny" style="margin-top:8px;">
-                  Keyboard: ← → move ball · A / D aim · ↑ ↓ power · J / L spin · Space roll
-                </div>
+                  <div class="tiny" style="margin-top:8px;">
+                    Keyboard: ← → move ball · A / D aim · ↑ ↓ power · J / L spin · Space roll
+                  </div>
 
-                <div class="result" id="result" style="margin-top:10px;">Can you earn birthday bragging rights?</div>
+                  <div class="result" id="result" style="margin-top:10px;">Can you earn birthday bragging rights?</div>
+                </div>
               </div>
             </div>
           </div>
