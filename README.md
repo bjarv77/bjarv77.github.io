@@ -554,6 +554,7 @@
       cursor:grab;
       touch-action:none;
       transition:box-shadow .2s ease, filter .2s ease;
+      transform: translateX(-50%);
     }
 
     .ball.dragging{cursor:grabbing}
