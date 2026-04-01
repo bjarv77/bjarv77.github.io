@@ -74,6 +74,12 @@
       z-index:1;
     }
 
+    @media (min-width: 1200px){
+      .wrap {
+        max-width: 1400px;
+      }
+    }
+
     .hero{
       position:relative;
       overflow:hidden;
