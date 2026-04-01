@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -950,7 +949,7 @@
           <h1>Brad is <span class="gradient">Leveling Up</span><br>to 30 🎳</h1>
           <p class="sub">
             Join us for birthday bowling in honor of Brad hitting Level 30!
-            Expect bowling, food, drinks, and good people.
+            Expect bowling, food, drinks, and a good time.
             Warm up for the party by taking a shot in the mini game below.
           </p>
         </div>
@@ -1135,8 +1134,8 @@
                   <button class="ball-option" data-ball="flame" type="button">
                     <div class="mini-ball flame"></div>
                     <div class="option-text">
-                      <strong>Flame</strong>
-                      <span>Hot roll behavior</span>
+                      <strong>Fire Ball</strong>
+                      <span>Always a good time!</span>
                     </div>
                   </button>
 
@@ -1192,7 +1191,7 @@
                 </div>
 
                 <div class="cta-row">
-                  <button class="primary" id="rollBtn" type="button">Roll for Glory</button>
+                  <button class="primary" id="rollBtn" type="button">Send It</button>
                   <button class="ghost" id="resetBtn" type="button">Reset Game</button>
                 </div>
 
@@ -1233,7 +1232,6 @@
       const highScoreEl = document.getElementById("highScore");
       const sparkle = document.getElementById("sparkle");
       const levelUpFlash = document.getElementById("levelUpFlash");
-      const copyBtn = document.getElementById("copyBtn");
       const copyStatus = document.getElementById("copyStatus");
       const ballOptions = Array.from(document.querySelectorAll(".ball-option"));
 
@@ -1398,7 +1396,17 @@
 
       function finishGame() {
         saveHighScoreIfNeeded();
-        result.textContent = `Game over. Final score: ${totalScore}. Extremely respectable birthday bowling behavior.`;
+        if (totalScore == 30){
+          result.textContent = `Game over. Final score: ${totalScore}. Perfect game!`;
+        } else if (totalScore >= 20){
+          result.textContent = `Game over. Final score: ${totalScore}. Not too shabby!`;
+        } else if (totalScore >= 10){
+          result.textContent = `Game over. Final score: ${totalScore}. Remarkably average.`;
+        } else if (totalScore > 0){
+          result.textContent = `Game over. Final score: ${totalScore}. You have some work to do.`;
+        } else {
+          result.textContent = `Game over. Final score: ${totalScore}. oof`;
+        }
         levelUp("GAME OVER");
         rollBtn.disabled = true;
       }
@@ -1479,7 +1487,7 @@
 
         if (roll === 1 && knocked === 10) {
           writeRollToScoreboard(knocked, true, false);
-          result.textContent = "💥 STRIKE. Birthday legend behavior.";
+          result.textContent = "💥 STRIKE! Who do you think you are I am!";
           updateHud();
           levelUp("STRIKE!");
           setTimeout(() => nextFrame(), 950);
@@ -1488,7 +1496,7 @@
 
         if (roll === 2 && framePinsRemaining === 0) {
           writeRollToScoreboard(knocked, false, true);
-          result.textContent = "✨ Spare! Very respectable. Very dangerous.";
+          result.textContent = "✨ Spare!";
           updateHud();
           levelUp("SPARE!");
           setTimeout(() => nextFrame(), 950);
@@ -1498,13 +1506,13 @@
         writeRollToScoreboard(knocked, false, false);
 
         if (knocked === 0) {
-          result.textContent = "🫠 Gutter-ish energy. Brad gets bragging rights.";
+          result.textContent = "Mark it zero!";
         } else if (knocked >= 7) {
-          result.textContent = `🎳 ${knocked} pins! Extremely solid effort.`;
+          result.textContent = `${knocked} pins! Noice!`;
         } else if (knocked >= 4) {
-          result.textContent = `😎 ${knocked} pins. Not bad at all.`;
+          result.textContent = `${knocked} pins. Not too bad!`;
         } else {
-          result.textContent = `😂 ${knocked} pins. A humble performance.`;
+          result.textContent = `${knocked} pins. At least it something!`;
         }
 
         if (roll === 1) {
@@ -1554,13 +1562,10 @@ Join us for Brad’s birthday bowling bash
 Saturday, April 11, 2026
 
 Dinner: 3:00 PM at Railroad
-Bowling: 5:00 PM at Strikers at Angel of the Winds Casino
+Bowling: 5:00 PM at Strikerz at Angel of the Winds Casino
 
 Bowling is $10/person.
-If you want to bowl, Venmo Brad @Bradley-Jarvensivu
-
-Open the invite and play the mini bowling game here:
-[insert your real link here]`;
+If you want to bowl, Venmo Brad @Bradley-Jarvensivu`;
 
         try {
           await navigator.clipboard.writeText(text);
@@ -1638,7 +1643,6 @@ Open the invite and play the mini bowling game here:
       spinSlider.addEventListener("input", updateHud);
       rollBtn.addEventListener("click", rollBall);
       resetBtn.addEventListener("click", resetWholeGame);
-      copyBtn.addEventListener("click", copyInviteText);
 
       ballOptions.forEach(btn => {
         btn.addEventListener("click", () => setBallStyle(btn.dataset.ball));
