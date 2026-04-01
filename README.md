@@ -480,39 +480,46 @@
       backdrop-filter:blur(6px);
     }
 
-    .pins{
-      position:absolute;
-      top:12%;
-      left:50%;
-      transform:translateX(-50%);
-      width:min(29%, 155px);
-      display:grid;
-      grid-template-columns:repeat(4, 1fr);
-      row-gap:8px;
-      justify-items:center;
-      z-index:2;
-      pointer-events:none;
+    .pins {
+      position: absolute;
+      top: 12%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transform: translateX(-50%);
+      display: block;
     }
 
-    .pin{
-      width:18px;
-      height:35px;
-      border-radius:12px 12px 9px 9px;
-      background:linear-gradient(180deg, #fff, #e7ebf5);
-      position:relative;
-      box-shadow:0 4px 8px rgba(0,0,0,.25);
-      transition:transform .55s ease, opacity .45s ease, filter .3s ease;
+    .pin {
+      position: absolute;
+      width: 18px;
+      height: 35px; /* keep the cylinder height */
+      border-radius: 12px 12px 9px 9px;
+      background: linear-gradient(180deg, #fff, #e7ebf5);
+      box-shadow: 0 4px 8px rgba(0,0,0,.25);
+      transition: transform .55s ease, opacity .45s ease, filter .3s ease;
     }
 
-    .pin::after{
-      content:"";
-      position:absolute;
-      left:1px; right:1px;
-      top:10px;
-      height:5px;
-      background:linear-gradient(90deg, var(--pink), #ff8ad0);
-      border-radius:4px;
+    .pin::after {
+      content: "";
+      position: absolute;
+      left: 1px; right: 1px;
+      top: 10px; height: 5px;
+      background: linear-gradient(90deg, var(--pink), #ff8ad0);
+      border-radius: 4px;
     }
+
+    /* Inverted bowling pin triangle (top-down view, pointing toward ball) */
+    .pin1  { top: 36%; left: 50%; transform: translateX(-50%); } /* back row, widest */
+    .pin2  { top: 24%; left: 42%; }
+    .pin3  { top: 24%; left: 58%; }
+    .pin4  { top: 12%; left: 34%; }
+    .pin5  { top: 12%; left: 50%; }
+    .pin6  { top: 12%; left: 66%; }
+    .pin7  { top: 0%;  left: 26%; }
+    .pin8  { top: 0%;  left: 42%; }
+    .pin9  { top: 0%;  left: 58%; }
+    .pin10 { top: 0%;  left: 74%; }
 
     .pin.hidden{
       opacity:0;
@@ -1071,18 +1078,18 @@
                   <div class="lane-badge" id="frameSummary">Frame 1 · Roll 1</div>
                 </div>
 
-                <div class="pins" id="pins">
-                  <div class="pin r1"></div>
-                  <div class="pin r2a"></div>
-                  <div class="pin r2b"></div>
-                  <div class="pin r3a"></div>
-                  <div class="pin r3b"></div>
-                  <div class="pin r3c"></div>
-                  <div class="pin r4a"></div>
-                  <div class="pin r4b"></div>
-                  <div class="pin r4c"></div>
-                  <div class="pin r4d"></div>
-                </div>
+                  <div class="pins">
+                    <div class="pin pin1"></div>
+                    <div class="pin pin2"></div>
+                    <div class="pin pin3"></div>
+                    <div class="pin pin4"></div>
+                    <div class="pin pin5"></div>
+                    <div class="pin pin6"></div>
+                    <div class="pin pin7"></div>
+                    <div class="pin pin8"></div>
+                    <div class="pin pin9"></div>
+                    <div class="pin pin10"></div>
+                  </div>
 
                 <div class="aim" id="aimLine"></div>
 
