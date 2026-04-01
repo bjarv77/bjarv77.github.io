@@ -780,6 +780,7 @@
       border:1px solid var(--line);
       border-radius:18px;
       padding:14px;
+      overflow-x: auto;
     }
 
     .score-table{
@@ -799,6 +800,7 @@
       text-align:center;
       font-weight:800;
       font-size:.9rem;
+      width: 1fr;
     }
 
     .score-table thead th{
