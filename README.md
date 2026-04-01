@@ -806,7 +806,7 @@
       text-align:center;
       font-weight:800;
       font-size:.9rem;
-      width: 1fr;
+      width: 25%;
     }
 
     .score-table thead th{
