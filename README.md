@@ -412,6 +412,10 @@
       gap: 14px;
     }
 
+    .control-panel > * {
+      width: 100%;
+    }
+
     .ball-picker-block {
       width: 100%;
       max-width: 100%;
@@ -422,6 +426,10 @@
       max-width: 100%;
       grid-row: 1;
       overflow-x: auto;
+    }
+
+    .scoreboard-block .subcard {
+      width: 100%;
     }
 
     .lane{
@@ -793,6 +801,7 @@
       border:1px solid var(--line);
       border-radius:18px;
       padding:14px;
+      display: block;
       width: 100%;
     }
 
