@@ -406,7 +406,9 @@
 
     .control-panel{
       order:2;
-      display:flex;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
 
     .ball-picker-block {
@@ -1122,7 +1124,7 @@
                 <span class="v" id="highScore">0</span>
               </div>
             </div>
-<div class="control-panel">
+            <div class="control-panel">
                 <div class="subcard scoreboard-block">
                   <h3>Scoreboard</h3>
                   <table class="score-table">
