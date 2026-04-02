@@ -808,10 +808,12 @@
 
     .score-table{
       width: 100%;
+      displpay: table;
       border-collapse: collapse;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.08);
       background: rgba(255,255,255,.02);
+      table-layout: fixed;
     }
 
     .score-table th,
@@ -821,7 +823,7 @@
       text-align:center;
       font-weight:800;
       font-size:.9rem;
-      width: auto;
+      width: 25%;
       max-width: 100%;
       word-break: break-word;
     }
