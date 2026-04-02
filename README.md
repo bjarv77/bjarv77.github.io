@@ -398,6 +398,7 @@
       display:grid;
       grid-template-columns:1fr;
       gap:14px;
+      grid-row: 2;
     }
 
     .lane-wrap{
@@ -419,6 +420,7 @@
     .scoreboard-block {
       width: 100%;
       max-width: 100%;
+      grid-row: 1;
     }
 
     .lane{
@@ -906,6 +908,10 @@
       line-height:1.25;
     }
 
+    .controls-block{
+      grid-row: 3;
+    }
+    
     .slider-block{
       display:grid;
       gap:8px;
