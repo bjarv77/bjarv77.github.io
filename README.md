@@ -338,6 +338,7 @@
 
     .game-card{
       padding:16px;
+      width: 100%;
     }
 
     .game-shell{
@@ -924,6 +925,10 @@
     .slider-block{
       display:grid;
       gap:8px;
+    }
+
+    .hero-right{
+      width: 100%;
     }
 
     .slider-head{
