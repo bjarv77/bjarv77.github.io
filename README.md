@@ -396,7 +396,8 @@
     }
 
     .game-main{
-      display:grid;
+      display:flex;
+      flex-direction: column;
       grid-template-columns:1fr;
       gap:14px;
       grid-row: 2;
@@ -432,6 +433,7 @@
       min-width: 0;
       grid-row: 1;
       overflow-x: auto;
+      order:0;
     }
 
     .scoreboard-block .subcard {
