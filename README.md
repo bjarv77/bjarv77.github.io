@@ -428,6 +428,7 @@
     }
     
     .scoreboard-block {
+      display: table;
       width: 100%;
       max-width: 100%;
       overflow-x: auto; /* horizontal scroll if table too wide */
@@ -815,9 +816,9 @@
     .score-table {
       display: table;       /* fixed typo */
       width: 100%;          /* fills container */
-      max-width: 100%;      /* prevents overflow */
+      max-width: none;      /* prevents overflow */
       border-collapse: collapse;
-      table-layout: fixed;  /* columns respect width */
+      table-layout: auto  /* columns respect width */
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.08);
       background: rgba(255,255,255,.02);
