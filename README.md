@@ -430,10 +430,8 @@
     .scoreboard-block {
       width: 100%;
       max-width: 100%;
-      min-width: 0;
-      grid-row: 1;
-      overflow-x: auto;
-      order:0;
+      overflow-x: auto; /* horizontal scroll if table too wide */
+      min-width: 0;     /* allows flex/grid children to shrink */
     }
 
     .scoreboard-block .subcard {
@@ -814,26 +812,28 @@
       width: 100%;
     }
 
-    .score-table{
-      width: 100%;
-      display: table;
+    .score-table {
+      display: table;       /* fixed typo */
+      width: 100%;          /* fills container */
+      max-width: 100%;      /* prevents overflow */
       border-collapse: collapse;
+      table-layout: fixed;  /* columns respect width */
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.08);
       background: rgba(255,255,255,.02);
-      table-layout: fixed;
     }
 
     .score-table th,
-    .score-table td{
-      border:1px solid rgba(255,255,255,.08);
-      padding:8px 10px;
-      text-align:center;
-      font-weight:800;
-      font-size:.9rem;
-      width: 25%;
+    .score-table td {
+      border: 1px solid rgba(255,255,255,.08);
+      padding: 8px 10px;
+      text-align: center;
+      font-weight: 800;
+      font-size: .9rem;
+      width: 25%;            /* equally divided columns */
       max-width: 100%;
-      word-break: break-word;
+      min-width: 44px;        /* keeps cells readable on small screens */
+      word-break: break-word; /* wraps long content */
     }
 
     .score-table thead th{
