@@ -792,15 +792,15 @@
       border:1px solid var(--line);
       border-radius:18px;
       padding:14px;
+      width: 100%;
     }
 
     .score-table{
-      width:100%;
-      border-collapse:collapse;
-      overflow-x: auto;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.08);
-      background:rgba(255,255,255,.02);
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.02);
       table-layout: fixed;
     }
 
