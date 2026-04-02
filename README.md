@@ -402,6 +402,10 @@
       grid-row: 2;
     }
 
+    .game-main > * {
+      min-width: 0;
+    }
+
     .lane-wrap{
       order:1;
     }
@@ -425,12 +429,14 @@
     .scoreboard-block {
       width: 100%;
       max-width: 100%;
+      min-width: 0;
       grid-row: 1;
       overflow-x: auto;
     }
 
     .scoreboard-block .subcard {
       width: 100%;
+      min-width: 0;
     }
 
     .lane{
