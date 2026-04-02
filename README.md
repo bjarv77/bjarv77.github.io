@@ -406,17 +406,17 @@
 
     .control-panel{
       order:2;
-    }
-        /* Flatten the control panel so children can be positioned */
-    .control-panel{
-      display:block;
+      display:flex;
     }
 
-    .ball-picker-block,
+    .ball-picker-block {
+      width: 100%;
+      max-width: 100%;
+    }
+    
     .scoreboard-block {
       width: 100%;
       max-width: 100%;
-      margin-top: 0; /* remove leftover margins */
     }
 
     .lane{
