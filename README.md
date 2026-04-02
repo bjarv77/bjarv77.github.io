@@ -816,7 +816,7 @@
 
     .score-table{
       width: 100%;
-      displpay: table;
+      display: table;
       border-collapse: collapse;
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.08);
