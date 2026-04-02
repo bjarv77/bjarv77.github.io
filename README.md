@@ -408,11 +408,11 @@
     }
 
     .lane-wrap{
-      order:1;
+      order:2;
     }
 
     .control-panel{
-      order:2;
+      order:3;
       display:grid;
       grid-template-columns: 1fr;
       gap: 14px;
